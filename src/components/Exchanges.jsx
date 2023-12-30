@@ -35,7 +35,7 @@ const Exchanges = () => {
     return (
         <Container maxW={'container.xl'}>
             {loading ? <Loader /> : <>
-                <HStack wrap={'wrap'}>
+                <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
                     {
                         exchanges.map((i) => (
                             <ExchangesCard name={i.name} img={i.image} rank={i.trust_score_rank} url={i.url} key={i.id} />

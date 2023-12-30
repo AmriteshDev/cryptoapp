@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { server } from '../index';
-import { Container, HStack, Text, Radio, VStack, Image, Heading, Button, RadioGroup } from '@chakra-ui/react';
+import { Container, HStack, Radio, Button, RadioGroup } from '@chakra-ui/react';
 import Loader from './Loader';
 import ErrorComponents from './ErrorComponents';
 import CoinsCard from './CoinsCard';
@@ -25,8 +25,8 @@ const Coins = () => {
       setLoading(true);
     }
  const btn  = new Array(132).fill(1);
+ 
     useEffect(() => {
-
         const fetchCoins = async () => {
             try {
                 const { data } = await axios.get(`${server}/coins/markets?vs_currency=${currency}&page=${page}`)
