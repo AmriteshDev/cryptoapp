@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { server } from '../index';
-import { Container, HStack, Text, VStack, Image, Heading, Button } from '@chakra-ui/react';
+import { Container, HStack, Text, Radio, VStack, Image, Heading, Button, RadioGroup } from '@chakra-ui/react';
 import Loader from './Loader';
 import ErrorComponents from './ErrorComponents';
 import CoinsCard from './CoinsCard';
@@ -16,7 +16,7 @@ const Coins = () => {
     const [page, setPage] = useState(1)
     const [currency, setCurrency] = useState('inr')
 
-    const currencySymble = currency ==="inr" ? "₹" : currencySymble === "eur" ? " €" : " $"
+    const currencySymble = currency ==="inr" ? "₹" : currency === "eur" ? " €" : " $"
 
 
     const changePage = (page)=>{
@@ -50,7 +50,16 @@ const Coins = () => {
     return (
         <Container maxW={'container.xl'}>
             {loading ? <Loader /> : <>
-                <HStack wrap={'wrap'}>
+         <RadioGroup value= {currency} onChange={setCurrency} p={"8"} >
+            <HStack spacing={'4'}>
+                <Radio value={"inr"} >INR</Radio>
+                <Radio value={"usd"} >USD</Radio>
+                <Radio value={"eur"} >EUR</Radio>
+            </HStack>
+         </RadioGroup>
+
+
+                <HStack wrap={'wrap'} justifyContent={"space-evenly"}>
                     {
                         coins.map((i) => (
                             <CoinsCard name={i.name} img={i.image}  price={i.current_price} symbol={i.symbol} id={i.id} key={i.id}  currencySymble={currencySymble} />
