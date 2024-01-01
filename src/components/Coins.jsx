@@ -16,16 +16,16 @@ const Coins = () => {
     const [page, setPage] = useState(1)
     const [currency, setCurrency] = useState('inr')
 
-    const currencySymble = currency ==="inr" ? "₹" : currency === "eur" ? " €" : " $"
+    const currencySymble = currency === "inr" ? "₹" : currency === "eur" ? " €" : " $"
 
 
-    const changePage = (page)=>{
-      console.log(page)
-      setPage(page);
-      setLoading(true);
+    const changePage = (page) => {
+        console.log(page)
+        setPage(page);
+        setLoading(true);
     }
- const btn  = new Array(132).fill(1);
- 
+    const btn = new Array(132).fill(1);
+
     useEffect(() => {
         const fetchCoins = async () => {
             try {
@@ -43,36 +43,36 @@ const Coins = () => {
             }
         }
         fetchCoins();
-    }, [currency,page])
+    }, [currency, page])
 
     if (error) return <ErrorComponents message={"Error While Fetching Coins."} />
 
     return (
         <Container maxW={'container.xl'}>
             {loading ? <Loader /> : <>
-         <RadioGroup value= {currency} onChange={setCurrency} p={"8"} >
-            <HStack spacing={'4'}>
-                <Radio value={"inr"} >INR</Radio>
-                <Radio value={"usd"} >USD</Radio>
-                <Radio value={"eur"} >EUR</Radio>
-            </HStack>
-         </RadioGroup>
+                <RadioGroup value={currency} onChange={setCurrency} p={"8"} >
+                    <HStack spacing={'4'}>
+                        <Radio value={"inr"} >INR</Radio>
+                        <Radio value={"usd"} >USD</Radio>
+                        <Radio value={"eur"} >EUR</Radio>
+                    </HStack>
+                </RadioGroup>
 
 
                 <HStack wrap={'wrap'} justifyContent={"space-evenly"}>
                     {
                         coins.map((i) => (
-                            <CoinsCard name={i.name} img={i.image}  price={i.current_price} symbol={i.symbol} id={i.id} key={i.id}  currencySymble={currencySymble} />
+                            <CoinsCard name={i.name} img={i.image} price={i.current_price} symbol={i.symbol} id={i.id} key={i.id} currencySymble={currencySymble} />
                         ))
 
                     }
                 </HStack>
-                <HStack w={'full'} overflow={'auto'}p={'8'} >
-                 { btn.map((items, index)=>
-                  <Button bgColor={'blackAlpha.900'} color={'white'} onClick={()=>changePage(index+1)} >{index+1}</Button>
-                  )}
+                <HStack w={'full'} overflow={'auto'} p={'8'} >
+                    {btn.map((items, index) =>
+                        <Button bgColor={'blackAlpha.900'} color={'white'} onClick={() => changePage(index + 1)} >{index + 1}</Button>
+                    )}
                 </HStack>
-                
+
             </>}
         </Container>
     )
