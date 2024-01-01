@@ -20,7 +20,6 @@ const Coins = () => {
 
 
     const changePage = (page) => {
-        console.log(page)
         setPage(page);
         setLoading(true);
     }

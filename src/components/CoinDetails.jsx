@@ -20,11 +20,6 @@ const CoinDetails = () => {
   const btns = ['24h', '7d', '30d', '60d', '200d', '1y', 'max']
   const switchChartStats = (key) => {
     switch (key) {
-      case "24h":
-        setDays("24h");
-        setLoading(true);
-        break;
-
       case "7d":
         setDays("7d");
         setLoading(true);
