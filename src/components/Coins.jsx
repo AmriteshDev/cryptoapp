@@ -6,25 +6,18 @@ import Loader from './Loader';
 import ErrorComponents from './ErrorComponents';
 import CoinsCard from './CoinsCard';
 
-
-
-
 const Coins = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [page, setPage] = useState(1)
     const [currency, setCurrency] = useState('inr')
-
     const currencySymble = currency === "inr" ? "₹" : currency === "eur" ? " €" : " $"
-
-
     const changePage = (page) => {
         setPage(page);
         setLoading(true);
     }
     const btn = new Array(132).fill(1);
-
     useEffect(() => {
         const fetchCoins = async () => {
             try {
@@ -32,13 +25,11 @@ const Coins = () => {
                 setCoins(data);
                 setLoading(false);
                 console.log(data)
-
             }
             catch (error) {
 
                 setError(true);
                 setLoading(false);
-
             }
         }
         fetchCoins();
@@ -56,14 +47,11 @@ const Coins = () => {
                         <Radio value={"eur"} >EUR</Radio>
                     </HStack>
                 </RadioGroup>
-
-
                 <HStack wrap={'wrap'} justifyContent={"space-evenly"}>
                     {
                         coins.map((i) => (
                             <CoinsCard name={i.name} img={i.image} price={i.current_price} symbol={i.symbol} id={i.id} key={i.id} currencySymble={currencySymble} />
                         ))
-
                     }
                 </HStack>
                 <HStack w={'full'} overflow={'auto'} p={'8'} >
@@ -71,12 +59,8 @@ const Coins = () => {
                         <Button bgColor={'blackAlpha.900'} color={'white'} onClick={() => changePage(index + 1)} >{index + 1}</Button>
                     )}
                 </HStack>
-
             </>}
         </Container>
     )
 }
-
-
-
 export default Coins

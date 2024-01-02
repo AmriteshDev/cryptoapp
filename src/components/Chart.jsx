@@ -25,6 +25,4 @@ const Chart = ({ arr = [], currency, days }) => {
         <Line options={{ responsive: true, }} data={data} />
     )
 }
-
-
 export default Chart

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Text, VStack, Image, Heading } from '@chakra-ui/react';
-const CoinsCard = ({id, currencySymble, name, img, symbol, price }) =>
+const CoinsCard = ({ id, currencySymble, name, img, symbol, price }) =>
 (
     <Link to={`/coins/${id}`}>
         <VStack w={'52'} shadow={'lg'} borderRadius={'lg'} transition={'all 0.3s'} m={'4'} css={{
@@ -17,7 +17,7 @@ const CoinsCard = ({id, currencySymble, name, img, symbol, price }) =>
                 {name}
             </Text>
             <Text noOfLines={1}>
-                {price ? `${currencySymble}${price}`:"NA" }
+                {price ? `${currencySymble}${price}` : "NA"}
             </Text>
         </VStack>
     </Link>

@@ -64,13 +64,11 @@ const CoinDetails = () => {
         setCoin(data);
         setChartArray(chartData.prices)
         setLoading(false);
-
       }
       catch (error) {
 
         setError(true);
         setLoading(false);
-
       }
     }
     fetchCoins();
@@ -102,7 +100,6 @@ const CoinDetails = () => {
               Last Updated on {(coin.market_data.last_updated).split("G")[0]}
             </Text>
             <Image src={coin.image.large} w={'16'} h={'16'} objectFit={'contain'} />
-
           </VStack>
           <Stat>
             <StatLabel>{coin.name}</StatLabel>

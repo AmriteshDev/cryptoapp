@@ -4,11 +4,11 @@ import React from 'react'
 const Loader = () => {
   return (
     <VStack h={'90vh'} justifyContent={'center'} >
-       <Box transform={'scale(3)'}>
-       <Spinner size={'xl'} />
+      <Box transform={'scale(3)'}>
+        <Spinner size={'xl'} />
 
-       </Box>
-       
+      </Box>
+
     </VStack>
   )
 }
